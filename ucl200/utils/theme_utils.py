@@ -1,0 +1,226 @@
+# utils/theme.py
+
+import streamlit as st
+
+def st_header(title="CLASP dashboard"):
+    st.markdown(f"""
+    <style>
+    .block-container {{
+        padding-top: 2rem
+    }}
+
+    .custom-title {{
+        text-align: center;
+        margin-bottom: 2rem;
+        font-size: 40px;
+        font-family: Arial, sans-serif;
+
+    }}
+    </style>
+
+    <h1 class="custom-title">{title}</h1>
+    """, unsafe_allow_html=True)
+
+def load_theme(
+    secondary="#A94442",
+    secondary_hover="#7A2F2F",
+    secondary_active="#5C1F1F",
+    base_font=20,
+    label_font=20,
+    button_font=20,
+    form_font=20,
+):
+
+    st.markdown(f"""
+    <style>
+
+    :root {{
+        --secondary-color: {secondary};
+        --secondary-hover: {secondary_hover};
+        --secondary-active: {secondary_active};
+        --base-font: {base_font}px;
+        --label-font: {label_font}px;
+        --button-font: {button_font}px;
+        --form-font: {form_font}px;
+    }}
+
+    /* ---------- GLOBAL TEXT ---------- */
+    html, body, [class*="css"] {{
+        font-size: var(--base-font) !important;
+        font-weight: 500 !important;
+    }}
+
+    /* ---------- TABS ---------- */
+    div[data-testid="stTabs"] button p {{
+        font-size: var(--label-font) !important;
+        font-weight: 500 !important;
+        color: #155a8a !important;
+    }}
+
+    div[data-testid="stTabs"] button[aria-selected="true"] p {{
+        font-weight: 650 !important;
+        color: #A94442 !important;
+    }}
+
+    /* ---------- FORMS ---------- */
+    [data-testid="stForm"] * {{
+        font-size: var(--form-font) !important;
+    }}
+
+    div[data-testid="stFormSubmitButton"] {{
+        margin-top: 18px !important;
+    }}
+
+    /* ---------- LABELS ---------- */
+    div[data-testid="stSelectbox"] label,
+    div[data-testid="stSelectbox"] label *,
+    div[data-testid="stMultiSelect"] label,
+    div[data-testid="stMultiSelect"] label *,
+    div[data-testid="stTextInput"] label,
+    div[data-testid="stTextInput"] label *,
+    div[data-testid="stDateInput"] label,
+    div[data-testid="stDateInput"] label *,
+    div[data-testid="stNumberInput"] label,
+    div[data-testid="stNumberInput"] label *,
+    div[data-testid="stTextArea"] label,
+    div[data-testid="stTextArea"] label * {{
+        font-size: var(--label-font) !important;
+        font-weight: 600 !important;
+        color: #155a8a !important;
+    }}
+
+    /* =========================================================
+       FORM SUBMIT + PRIMARY BUTTONS
+       ========================================================= */
+
+    div[data-testid="stFormSubmitButton"] > button {{
+        height: 1.6em !important;
+        background-color: #155a8a !important;
+        color: white !important;
+        border-radius: 20px !important;
+        font-weight: 500 !important;
+        font-size: var(--button-font) !important;
+        border: none !important;
+    }}
+
+    div[data-testid="stFormSubmitButton"] > button,
+    div[data-testid="stFormSubmitButton"] > button *,
+    div[data-testid="stFormSubmitButton"] > button p,
+    div[data-testid="stFormSubmitButton"] > button span {{
+        color: white !important;
+        font-size: var(--button-font) !important;
+    }}
+
+    div[data-testid="stFormSubmitButton"] > button:hover {{
+        background-color: #1F4264 !important;
+        color: white !important;
+    }}
+
+    div[data-testid="stFormSubmitButton"] > button:active {{
+        background-color: #12324D !important;
+        color: white !important;
+    }}
+
+    button[kind="primary"] {{
+        height: 1.6em !important;
+        background-color: #155a8a !important;
+        color: white !important;
+        border-radius: 20px !important;
+        font-weight: 500 !important;
+        font-size: var(--button-font) !important;
+        border: none !important;
+    }}
+
+    button[kind="primary"],
+    button[kind="primary"] * {{
+        color: white !important;
+        font-size: var(--button-font) !important;
+    }}
+
+    button[kind="primary"]:hover {{
+        background-color: #35754C !important;
+    }}
+
+    button[kind="primary"]:active {{
+        background-color: #304F40 !important;
+    }}
+
+    /* =========================================================
+   DOWNLOAD BUTTONS
+   ========================================================= */
+
+    div[data-testid="stDownloadButton"] > button {{
+
+        height: 1.6em !important;
+        background-color: #155a8a !important;
+        color: white !important;
+        border-radius: 20px !important;
+        font-weight: 500 !important;
+        font-size: var(--button-font) !important;
+        border: none !important;
+
+    }}
+
+    div[data-testid="stDownloadButton"] > button,
+    div[data-testid="stDownloadButton"] > button *,
+    div[data-testid="stDownloadButton"] > button p,
+    div[data-testid="stDownloadButton"] > button span {{
+
+        color: white !important;
+        font-size: var(--button-font) !important;
+
+    }}
+
+    div[data-testid="stDownloadButton"] > button:hover,
+    div[data-testid="stDownloadButton"] > button:hover *,
+    div[data-testid="stDownloadButton"] > button:hover p,
+    div[data-testid="stDownloadButton"] > button:hover span {{
+
+        background-color: #35754C !important;
+        color: white !important;
+
+    }}
+
+    div[data-testid="stDownloadButton"] > button:active,
+    div[data-testid="stDownloadButton"] > button:active *,
+    div[data-testid="stDownloadButton"] > button:active p,
+    div[data-testid="stDownloadButton"] > button:active span {{
+
+        background-color: #304F40 !important;
+        color: white !important;
+
+    }}
+
+    /* =========================================================
+       SECONDARY BUTTONS
+       ========================================================= */
+
+    div[data-testid="stButton"] {{
+        margin: 0 !important;
+        padding: 0 !important;
+    }}
+
+    button[kind="secondary"] {{
+        border-radius: 20px !important;
+    }}
+
+    button[kind="secondary"],
+    button[kind="secondary"] * {{
+        color: var(--secondary-color) !important;
+        background: none !important;
+        font-size: var(--button-font) !important;
+    }}
+
+    button[kind="secondary"]:hover,
+    button[kind="secondary"]:hover * {{
+        color: var(--secondary-hover) !important;
+    }}
+
+    button[kind="secondary"]:active,
+    button[kind="secondary"]:active * {{
+        color: var(--secondary-active) !important;
+        background: none !important;
+    }}
+
+    </style>
+    """, unsafe_allow_html=True)
